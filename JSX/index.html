@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<script type="text/babel">
+
+    /*  JSX - Javascrtipt XLM (https://vi.reactjs.org/docs/introducing-jsx.html)
+        1. Là một cú pháp mở rộng cho JavaScrip, không phải là HTML, cũng không phải chuỗi kí tự
+        2.  JSX đi kèm với toàn bộ tính năng của JavaScript(code js dùng dấu "{}")
+        3. Sử dụng thư viện Babel để dùng JSX
+    */
+
+    const courses = [
+        {
+            name: 'HTML, CSS'
+        }, 
+        {
+            name: 'ReactJS'
+        }
+    ]
+    
+    const root = document.getElementById('root');
+    
+
+    /*
+        React@17
+    */
+    const ul = 
+        <ul> 
+            {
+                courses.map(course => 
+                    // React.createElement('li', null, course.name),
+                    <li key ={course.name}>{course.name}</li>
+                )
+            }    
+        </ul>;  
+
+    ReactDOM.render(ul, root);
+
+    /*
+        React@18 
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createElment(container);
+        root.render(ul);
+      
+
+        const title = 'Fullstack';
+        const headingElement = <h1 style={color: 'red' }> { title }</h1 >;
+
+        Lỗi cú pháp.Thuộc tính style trong JSX phải nhận giá trị là object.
+        Khi muốn viết code JSX cùng code HTML thì phải đặt đoạn code JSX trong cặp { }.
+        Nên cú pháp đúng phải là style = {{ color: 'red' }}.
+    */
+
+
+    /*  
+        JSX render Array - không render 2 element cùng lúc
+    */
+
+    const jsx = (
+        // <React.Fragment>
+        //     <h1>Heanding 1</h1>
+        //     <h2>Heading 2</h2>
+        // </React.Fragment>
+
+        
+            React.createElement(
+                React.Fragment, null, 
+                React.createElement('h1', null, 'Heading1'),
+                React.createElement('h1', null, 'Heading2'),
+            )
+        
+    )
+
+    ReactDOM.render(jsx, root);
+</script>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+</body>
+
+<script>
+
+    // DOM
+    const h1DOM = document.createElement('h1');
+
+    const ulDOM = document.createElement('ul');
+    const liDOM1 = document.createElement('li');
+    const liDOM2 = document.createElement('li');
+
+    const divDOM = document.createElement('div');
+    const h2DOM = document.createElement('h2');
+    const pDOM = document.createElement('p');
+
+    h1DOM.title = 'Hello';
+    h1DOM.className = 'heading';
+    h1DOM.innerText = 'Hello World';
+
+    liDOM1.textContent = 'Javascript';
+    liDOM2.innerText = 'ReactJS';
+
+    ulDOM.appendChild(liDOM1);
+    ulDOM.appendChild(liDOM2);
+
+    h2DOM.title = 'Học React tại F8';
+    h2DOM.textContent = 'Học ReactJS'
+    divDOM.className = 'post-item';
+    pDOM.innerText = 'Học React từ cơ bản đến nâng cao';
+    
+    divDOM.appendChild(h2DOM);
+    divDOM.appendChild(pDOM);
+
+    document.body.appendChild(h1DOM);
+    document.body.appendChild(ulDOM);
+    document.body.appendChild(divDOM);
+    
+    /* React
+        React.createElement(type, props, children, childrenx)
+        từ đối số thứ 3 trở đi đều là children, children cũng là một prop,
+        nhưng phải được truyền ở đối số thứ 3
+    */
+    const h1React = React.createElement('h1', {
+        title: 'Hello',
+        className: 'heading',
+        style: 'color: white'
+    }, 'Hello')
+
+
+    const ulReact = React.createElement(
+        'ul', 
+        null, //Props null  
+        React.createElement('li', {id: 'id-li'}, 'Javascript'),
+        React.createElement('li', null, 'ReactJS')
+    );
+
+
+    const divReact = React.createElement(
+        'div', {
+            className: 'post-item',
+        }, 
+        React.createElement('h2', {
+            title: 'Học React tại F8',
+        }, 'Học ReactJS'),
+        React.createElement('p', null, 'Học React từ cơ bản đến nâng cao')
+    );
+
+    console.log(h1React);
+    console.log(ulReact);
+    console.log(divReact);
+</script>
+</html>
